@@ -36,8 +36,10 @@ class SupportAgent:
 
     async def get_response(self, prompt: str) -> str:
 
+        member_username = "user123"
+
         configuration = {
-            "configurable": {"thread_id": "abc123"},
+            "configurable": {"thread_id": f"{member_username}"},
             "recursion_limit": RECURSION_LIMIT,
         }
         error_msg = "Sorry mate, an error occurred. Please try again later."
