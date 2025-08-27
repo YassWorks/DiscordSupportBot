@@ -34,12 +34,10 @@ class SupportAgent:
             temperature=temperature,
         )
 
-    async def get_response(self, prompt: str) -> str:
-
-        member_username = "user123"
+    async def get_response(self, prompt: str, member_username: str) -> str:
 
         configuration = {
-            "configurable": {"thread_id": f"{member_username}"},
+            "configurable": {"thread_id": f"{member_username or 'default_user'}"},
             "recursion_limit": RECURSION_LIMIT,
         }
         error_msg = "Sorry mate, an error occurred. Please try again later."

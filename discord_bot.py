@@ -3,8 +3,11 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import os
+import logging
+from datetime import datetime
 
 
+handler = logging.FileHandler(filename=f"logs/{datetime.now().strftime('%Y-%m-%d')}.log", encoding='utf-8', mode='w')
 load_dotenv()
 
 
@@ -31,13 +34,12 @@ async def on_ready():
         model_name=MODEL_NAME,
         temperature=TEMPERATURE,
     )
-    print(f"Logged in as {bot.user.name}")
-    
+
 
 @bot.command(name="ask")
 async def ask(ctx):
-    response = await agent.get_response(ctx.message.content)
+    response = await agent.get_response(ctx.message.content, ctx.author.name)
     await ctx.send(f"**{ctx.author.mention}**: {response}")
 
 
-bot.run(TOKEN)
+bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
