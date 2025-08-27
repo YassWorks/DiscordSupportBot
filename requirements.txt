@@ -1,0 +1,8 @@
+fastapi
+langchain
+langchain-cerebras
+langgraph
+langgraph-checkpoint-sqlite
+python-dotenv
+uvicorn
+aiosqlite

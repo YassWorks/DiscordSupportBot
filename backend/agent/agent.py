@@ -5,10 +5,10 @@ from langgraph.graph.message import add_messages
 from langgraph.graph import StateGraph, END, START
 from typing import TypedDict, Annotated
 from langgraph.prebuilt import ToolNode, tools_condition
-from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langchain_core.prompts import ChatPromptTemplate
 from pathlib import Path
-import sqlite3
+import aiosqlite
 
 
 class State(TypedDict):
@@ -16,14 +16,13 @@ class State(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
 
 
-def create_base_agent(
+def create_agent(
     model_name: str,
     api_key: str,
     tools: list,
     system_prompt: str,
     temperature: float = 0,
-    include_graph: bool = False,
-) -> CompiledStateGraph | tuple[StateGraph, CompiledStateGraph]:
+) -> CompiledStateGraph:
     """Create a base agent with common configuration and error handling.
 
     Args:
@@ -32,10 +31,9 @@ def create_base_agent(
         tools: List of tools to be used by the agent
         system_prompt: System prompt for the agent
         temperature: Temperature for the model
-        include_graph: Whether to include the graph in the response
 
     Returns:
-        Compiled state graph agent or tuple of (graph, compiled_graph)
+        Compiled state graph agent
     """
 
     llm = ChatCerebras(
@@ -57,6 +55,7 @@ def create_base_agent(
         llm_with_tools = llm.bind_tools(tools)
     else:
         llm_with_tools = llm
+        
     llm_chain = template | llm_with_tools
     graph = StateGraph(State)
 
@@ -78,12 +77,10 @@ def create_base_agent(
 
     db_path = (Path(__file__).resolve().parents[1] / "database")
     db_file = db_path / "memory.sqlite"
-    conn = sqlite3.connect(db_file.as_posix(), check_same_thread=False)
+    
+    conn = aiosqlite.connect(db_file.as_posix(), check_same_thread=False)
+    mem = AsyncSqliteSaver(conn)
 
-    mem = SqliteSaver(conn)
-    built_graph = graph.compile(checkpointer=mem)
+    compiled_graph = graph.compile(checkpointer=mem)
 
-    if include_graph:
-        return graph, built_graph
-    else:
-        return built_graph
+    return compiled_graph
