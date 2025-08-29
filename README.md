@@ -59,7 +59,6 @@ docker compose up --build
 │  ├─ helpers/
 │  │  └─ strip_thinking.py
 │  ├─ prompts/
-│  │  └─ system_prompt.md
 │  ├─ src/
 │  │  ├─ get_response.py
 │  │  └─ guardrails.py
