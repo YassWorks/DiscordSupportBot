@@ -1,28 +1,54 @@
-from fastapi import FastAPI
 from backend import SupportAgent
+from backend import MESSAGES, rate_limited
+import discord
+from discord.ext import commands
 from dotenv import load_dotenv
 import os
+import logging
+from datetime import datetime
 
 
+handler = logging.FileHandler(filename=f"logs/{datetime.now().strftime('%Y-%m-%d')}.log", encoding='utf-8', mode='w')
 load_dotenv()
 
 
+TOKEN = os.getenv("DISCORD_TOKEN")
 API_KEY = os.getenv("CEREBRAS_API_KEY")
 MODEL_NAME = "qwen-3-32b"
 TEMPERATURE = 0
 
 
-agent = SupportAgent(
-    api_key=API_KEY,
-    model_name=MODEL_NAME,
-    temperature=TEMPERATURE,
-)
+intents = discord.Intents.default()
+intents.message_content = True
+intents.presences = True
 
 
-app = FastAPI(description="Member Discord Support Agent API",)
+bot = commands.Bot(command_prefix="/", intents=intents)
+agent = None
 
 
-@app.get("/prompt/{prompt}")
-async def get_prompt_response(prompt: str):
-    response = await agent.get_response(prompt)
-    return response
+@bot.event
+async def on_ready():
+    global agent
+    agent = SupportAgent(
+        api_key=API_KEY,
+        model_name=MODEL_NAME,
+        temperature=TEMPERATURE,
+    )
+
+
+@bot.command(name="ask")
+async def ask(ctx):
+    
+    if (len(ctx.message.content) > 1000):
+        await ctx.send(f"**{ctx.author.mention}**: {MESSAGES["length"]}")
+        return
+    if rate_limited(ctx.author.id):
+        await ctx.send(f"**{ctx.author.mention}**: {MESSAGES["rate_limited"]}")
+        return
+
+    response = await agent.get_response(ctx.message.content, ctx.author.name)
+    await ctx.send(f"**{ctx.author.mention}**: {response}")
+
+
+bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)

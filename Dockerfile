@@ -1,19 +1,24 @@
 FROM python:3.13-alpine
 
-# no pyc files
-ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# no buffering stdout and stderr
-ENV PYTHONUNBUFFERED=1
+ENV VENV_PATH=/opt/venv
+RUN python -m venv "$VENV_PATH"
+ENV PATH="$VENV_PATH/bin:$PATH"
 
 WORKDIR /app
 
-RUN apk add --no-cache \
-    build-base \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache --virtual .build-deps \
+    build-base
+
+COPY requirements.txt .
+RUN pip install --upgrade pip setuptools wheel \
+    && pip install --no-cache-dir -r requirements.txt \
+    && apk del .build-deps
 
 COPY . .
-RUN pip install --no-cache-dir -r requirements.txt
 
 ARG UID=10001
 RUN adduser \
@@ -25,7 +30,10 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
+RUN mkdir -p /app/logs /app/backend/database \
+    && chown -R appuser:appuser /app/logs /app/backend/database \
+    && chmod 0750 /app/logs /app/backend/database
+
 USER appuser
 
-
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "main.py"]
