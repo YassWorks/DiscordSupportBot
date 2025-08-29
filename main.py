@@ -15,7 +15,7 @@ load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 API_KEY = os.getenv("CEREBRAS_API_KEY")
 MODEL_NAME = "qwen-3-32b"
-TEMPERATURE = 0
+TEMPERATURE = 1
 
 
 intents = discord.Intents.default()
