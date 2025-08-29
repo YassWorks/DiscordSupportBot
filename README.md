@@ -1,6 +1,6 @@
 # AI Discord Chatbot
 
-I made this project to make it easier for new members of the IEEE CS chapter to get the hottest info about the new events and stuff like that.
+I made this project to make it easier for new members of the IEEE CS chapter to get the hottest info about the new events and stuff like that. But really this can be used as a template for creating any AI powered Discord chatbot. Just tweak the tools and the system prompt and you'll be good to go!
 
 ### Tech used:
 
