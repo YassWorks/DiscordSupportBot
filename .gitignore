@@ -9,3 +9,5 @@ test*
 logs/
 *.log
 *.txt
+pyproject.toml
+uv.lock
