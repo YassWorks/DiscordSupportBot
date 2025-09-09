@@ -1,0 +1,17 @@
+## what is it about?
+
+AINS (Artificial Intelligence National Summit) is an annual summit hosted by the IEEE Computer Society Chapter at INSAT. It gathers AI and data science enthusiasts for workshops, talks, competitions, a poster session, and a hackathon. It aims to democratize intelligence and inspire innovation within the Tunisian and regional tech community.
+
+## when is it held?
+
+Usually in late June.
+
+## what are the technical fields involved?
+
+- Artificial intelligence
+- Data science
+- Machine learning
+
+## who is it for?
+
+Open to AI and data-science enthusiasts in Tunisia (and possibly region), especially students and professionals. Organized by IEEE INSAT CS Chapter. The hackathon requires participants who are 18+, in teams of 2–4.

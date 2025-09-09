@@ -1,0 +1,18 @@
+## what is it about?
+
+A global, 24-hour programming competition for IEEE student teams.
+Teams receive the same set of programming problems and submit code to an online judge. 
+
+## when is it held?
+
+Annual event, typically in October. The contest runs 24 hours starting at 00:00 UTC on the announced date. For example the rules state the 24-hour UTC window and the site lists edition dates. 
+
+## what are the technical fields involved?
+
+Primarily competitive programming topics: algorithms, data structures, graph theory, dynamic programming, strings, computational geometry and numeric/mathematical problems.
+Problems can also touch applied engineering areas such as image processing, signal processing, networks, simulation and simple circuit/embedded modelling as seen in past problem sets. 
+
+## who is it for?
+
+Undergraduate and graduate IEEE Student members (teams of 1–3).
+Teams must be proctored by an IEEE member of higher grade. Registration requires IEEE membership information. Universities may enter multiple teams

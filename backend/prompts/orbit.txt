@@ -1,0 +1,19 @@
+## what is it about?
+
+Orbit 1.0 is a DevOps and MLOps-focused event organized by the IEEE Computer Society Chapter at INSAT. Its primary objective is to introduce students to the evolving fields of DevOps and MLOps, emphasizing their significance in modern software development and machine learning workflows. The event aims to bridge the gap between theoretical knowledge and practical application in these domains.
+
+## when is it held?
+
+Usually in April.
+
+## what are the technical fields involved?
+
+- DevOps: Focused on the integration of development and operations, emphasizing continuous integration/continuous deployment (CI/CD), automation, and infrastructure as code.
+
+- MLOps: Concentrated on the deployment, monitoring, and governance of machine learning models in production environments, ensuring scalability and reliability.
+
+- Cloud: Central to both DevOps and MLOps, cloud computing provides scalable infrastructure, flexible resources, and a platform for deploying, managing, and monitoring applications and machine learning models. It enables automation, collaboration, and rapid experimentation, making it essential for modern software and data workflows.
+
+## who is it for?
+
+Orbit 1.0 is tailored for students and professionals interested in the intersection of software development and operations, particularly those keen on understanding and implementing DevOps and MLOps practices. The event is designed to cater to both beginners and those with intermediate knowledge in these areas.

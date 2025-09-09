@@ -1,0 +1,17 @@
+## what is it about?
+
+A 2–3 week event focused on data science and data engineering. It features workshops, talks, and conferences led by experts from major tech companies. The program ends with a data science competition, structured like a Kaggle challenge, and a hackathon where teams build data-driven solutions.
+
+## when is it held?
+
+Usually in Jan-Feb. 
+
+## what are the technical fields involved?
+
+- Data science: statistical analysis, data cleaning, exploratory data analysis, feature engineering, and building predictive models.
+- Machine learning: supervised and unsupervised learning, model training and evaluation, optimization, and experimentation with real-world datasets.
+- Data engineering: designing and managing data pipelines, ETL processes, storage systems, and ensuring data quality and scalability for analytics and modeling.
+
+## who is it for?
+
+Anyone passionate about data, machine learning, or data engineering. Participants of all backgrounds can join, learn, and grow their skills throughout the program.
