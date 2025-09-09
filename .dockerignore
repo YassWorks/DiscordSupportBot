@@ -15,18 +15,14 @@ __pycache__
 # Development files
 .env
 .env.local
+.env.example
 .env.development
 .env.test
 test.py
 test_*
 *_test.py
-notes.md
 output.txt
 output.*
-
-# Documentation
-README.md
-*.md
 
 # Build tools and dependencies
 pyproject.toml

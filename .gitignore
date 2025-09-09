@@ -8,6 +8,6 @@ test*
 .github
 logs/
 *.log
-*.txt
+system_prompt.txt
 pyproject.toml
 uv.lock
