@@ -1,7 +1,7 @@
 from backend.agent.agent import create_agent
 from langchain_core.messages import AIMessage
 from backend.helpers.strip_thinking import strip_thinking_block
-from backend.agent.tools import tools
+from backend.agent.tools import TOOLS
 from pathlib import Path
 import openai
 
@@ -29,7 +29,7 @@ class SupportAgent:
         self.agent = create_agent(
             model_name=model_name,
             api_key=api_key,
-            tools=tools,
+            tools=TOOLS,
             system_prompt=system_prompt.strip() or "You are a helpful assistant.",
             temperature=temperature,
         )
