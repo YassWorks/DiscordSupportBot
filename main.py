@@ -21,7 +21,6 @@ TEMPERATURE = 1
 
 intents = discord.Intents.default()
 intents.message_content = True
-intents.presences = True
 
 
 bot = commands.Bot(command_prefix="/", intents=intents)
@@ -52,4 +51,4 @@ async def ask(ctx):
     await ctx.send(f"**{ctx.author.mention}**: {response}")
 
 
-bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
+bot.run(TOKEN, log_handler=handler, log_level=logging.ERROR)
