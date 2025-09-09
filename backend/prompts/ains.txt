@@ -14,4 +14,4 @@ Usually in late June.
 
 ## who is it for?
 
-Open to AI and data-science enthusiasts in Tunisia (and possibly region), especially students and professionals. Organized by IEEE INSAT CS Chapter. The hackathon requires participants who are 18+, in teams of 2–4.
+Open to AI and data-science enthusiasts in Tunisia, especially students and professionals. Organized by IEEE INSAT CS Chapter. The hackathon requires participants to be in teams of 2–4.
