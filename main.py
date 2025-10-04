@@ -15,7 +15,12 @@ load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN") or os.environ["DISCORD_TOKEN"]
 API_KEY = os.getenv("CEREBRAS_API_KEY") or os.environ["CEREBRAS_API_KEY"]
 
-MODEL_NAME = "qwen-3-32b"
+MODELS_NAMES = [
+    "gpt-oss-120b",
+    "qwen-3-32b",
+    "qwen-3-235b-a22b-instruct-2507",
+    "llama-3.3-70b",
+]
 TEMPERATURE = 1
 
 
@@ -32,7 +37,7 @@ async def on_ready():
     global agent
     agent = SupportAgent(
         api_key=API_KEY,
-        model_name=MODEL_NAME,
+        model_names=MODELS_NAMES,
         temperature=TEMPERATURE,
     )
 
