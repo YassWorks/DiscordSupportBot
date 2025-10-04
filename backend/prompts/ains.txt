@@ -4,7 +4,7 @@ AINS (Artificial Intelligence National Summit) is an annual summit hosted by the
 
 ## when is it held?
 
-Usually in late June.
+Usually in mid June.
 
 ## what are the technical fields involved?
 
